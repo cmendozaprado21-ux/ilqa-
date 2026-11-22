@@ -74,3 +74,8 @@ main > #taller[data-moment]:not(.is-live) { height: calc(2 * 100svh); min-height
 
 /* the catalogue at 1024 and up: each photograph takes the tile's full height, so the two screens are filled */
 @media (min-width: 1024px) { #catalogo .tile { grid-template-rows: minmax(0, 1fr) auto auto; } #catalogo .tile__media { aspect-ratio: auto; min-height: 0; } }
+
+/* safety: a section whose content is taller than the screen (the cart as it fills, a short laptop screen)
+   grows with it instead of running under the next section */
+main > section:not(.hero):not([data-moment]) { height: auto; min-height: calc(var(--h, 1) * 100svh); }
+@media (max-width: 639px) { main > section:not(.hero):not([data-moment]) { min-height: calc(var(--hm, var(--h, 1)) * 100lvh); } }
